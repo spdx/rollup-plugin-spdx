@@ -1,0 +1,35 @@
+# SPDX-FileCopyrightText: 2023 SPDX contributors
+#
+# SPDX-License-Identifier: MIT
+
+name: Lint and build
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    types: [opened, reopened, synchronize]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check repository out
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install node modules
+        run: npm ci
+
+      - name: Check linter
+        run: npm run lint-check
+
+      - name: Build plugin
+        run: npm run build-example
+
+      - name: Build examples
+        run: npm run build
