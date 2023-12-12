@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "lib": ["esnext"]
+  },
+  "include": [
+    "sources/**/*",
+    "examples/**/*.ts",
+    ".eslintrc.js",
+    "rollup.config.ts"
+  ]
+}

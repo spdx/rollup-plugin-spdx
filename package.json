@@ -1,0 +1,62 @@
+{
+  "name": "rollup-plugin-spdx",
+  "version": "0.0.1",
+  "description": "A Rollup plugin to create SPDX SBOM files",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spdx/tools-ts.git"
+  },
+  "main": "dist/rollup-plugin-spdx.cjs",
+  "module": "dist/rollup-plugin-spdx.mjs",
+  "types": "dist/rollup-plugin-spdx.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "CHANGELOG.md",
+    "../LICENSE",
+    "package.json"
+  ],
+  "dependencies": {
+    "@spdx/tools": "^0.0.6",
+    "sha1-file": "^3.0.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^11.1.5",
+    "@types/node": "^20.8.4",
+    "rollup": "^4.1.4",
+    "rollup-plugin-dts": "^6.1.0",
+    "tslib": "^2.6.2",
+    "typescript": "^5.2.2",
+    "@typescript-eslint/eslint-plugin": "^6.7.5",
+    "eslint": "^8.51.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-config-standard-with-typescript": "^39.1.1",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-n": "^16.1.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "husky": "^8.0.0",
+    "lint-staged": "^14.0.1",
+    "prettier": "3.0.3"
+  },
+  "scripts": {
+    "build": "rollup --config rollup.config.ts --configPlugin typescript",
+    "build-example": "rollup --config examples/rollup.config.ts --configPlugin typescript",
+    "lint-check": "eslint -c .eslintrc.js --ext .ts,.js .",
+    "lint-fix": "eslint -c .eslintrc.js --fix --ext .ts,.js .",
+    "prepare": "husky install && npm run build",
+    "pre-commit": "lint-staged",
+    "prepublish": "npm run build"
+  },
+  "lint-staged": {
+    "**/*.ts": "npm run lint-fix"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/rollup-plugin-spdx.d.ts",
+      "require": "./dist/rollup-plugin-spdx.cjs",
+      "import": "./dist/rollup-plugin-spdx.mjs"
+    }
+  }
+}
