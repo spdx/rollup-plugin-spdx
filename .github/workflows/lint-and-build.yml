@@ -22,14 +22,16 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install node modules
-        run: npm ci
+      - name: Install node modules and build plugin
+        run: |
+            npm ci
+            npm run build
+
+      - name: Install node modules and build example
+        run: |
+          cd examples
+          npm ci
+          npm run build
 
       - name: Check linter
         run: npm run lint-check
-
-      - name: Build plugin
-        run: npm run build-example
-
-      - name: Build examples
-        run: npm run build

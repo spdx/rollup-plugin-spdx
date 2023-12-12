@@ -22,11 +22,11 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install node modules
-        run: npm ci
-
-      - name: Build Rollup example
-        run: npm run build-example
+      - name: Install node modules and build example
+        run: |
+            cd examples
+            npm ci
+            npm run build
 
       - name: Install spdx-tools-java
         run: .github/workflows/scripts/spdx-tools-java-wrapper.sh bootstrap
