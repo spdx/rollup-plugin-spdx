@@ -24,14 +24,16 @@ jobs:
 
       - name: Install node modules and build plugin
         run: |
+            set -e
             npm ci
             npm run build
 
       - name: Install node modules and build example
         run: |
-          cd examples
-          npm ci
-          npm run build
+            set -e
+            cd examples
+            npm ci
+            npm run build
 
       - name: Check linter
         run: npm run lint-check

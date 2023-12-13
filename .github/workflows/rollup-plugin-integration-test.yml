@@ -24,6 +24,7 @@ jobs:
 
       - name: Install node modules and build example
         run: |
+            set -e
             cd examples
             npm ci
             npm run build
