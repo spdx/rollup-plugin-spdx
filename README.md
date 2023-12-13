@@ -4,7 +4,7 @@ SPDX-FileCopyrightText: 2023 SPDX contributors
 SPDX-License-Identifier: CC0-1.0
 -->
 
-# @spdx/rollup-plugin-spdx
+# rollup-plugin-spdx
 A Rollup plugin to create SBOM files in the SPDX format.
 
 When added to a Rollup configuration, this plugin will create an SBOM file for the package that is being built.
